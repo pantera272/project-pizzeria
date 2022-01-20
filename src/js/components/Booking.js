@@ -1,5 +1,6 @@
 import {templates, select} from '../settings.js';
 import AmountWidget from './AmountWidget.js';
+import HourPicker from './HourPicker.js';
 
 class Booking{
   constructor(element){
@@ -20,6 +21,9 @@ class Booking{
 
     thisBooking.dom.peopleAmount = document.querySelector(select.booking.peopleAmount);
     thisBooking.dom.hoursAmount = document.querySelector(select.booking.hoursAmount);
+
+    thisBooking.dom.hourPicker = document.querySelector(select.widgets.datePicker.wrapper);
+    
   }
 
   initWidgets(){
@@ -27,10 +31,14 @@ class Booking{
 
     thisBooking.peopleAmount = new AmountWidget(thisBooking.dom.peopleAmount);
     thisBooking.hoursAmount = new AmountWidget(thisBooking.dom.hoursAmount);
-
+    console.log(thisBooking.dom.hourPicker);
+    thisBooking.hourPicker = new HourPicker(thisBooking.dom.hourPicker);
+    
+    // eslint-disable-next-line no-unused-vars
     thisBooking.dom.peopleAmount.addEventListener('click', function(event){
       console.log('click people');
     });
+    // eslint-disable-next-line no-unused-vars
     thisBooking.dom.hoursAmount.addEventListener('click', function(event){
       console.log('click hours');
     });
